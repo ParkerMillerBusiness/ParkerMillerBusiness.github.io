@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Parkers Personal Website</title>
+<style>
+    /* CSS for the button container */
+    .button-container {
+        text-align: center;   /* Centers the button horizontally */
+        margin-top: 20px;     /* Top margin for spacing */
+    }
+
+    /* CSS for the button */
+    button {
+        background-color: red; /* Red background */
+        color: white;          /* White text */
+        padding: 10px 20px;    /* Padding around the text */
+        border: none;          /* No border */
+        border-radius: 5px;    /* Rounded corners */
+        cursor: pointer;       /* Pointer cursor on hover */
+        font-size: 16px;       /* Font size */
+    } 
+</style>
+</head>
+<body>
+    <!-- Container for the button to manage positioning -->
+    <div class="button-container">
+        <!-- Button element -->
+        <button onclick="displayHelloWorld()">Click Me!</button>
+    </div>
+
+    <!-- Script to display Hello World -->
+    <script>
+        function displayHelloWorld() {
+            alert('Welcome to Parker Millers personal website!'); // Display alert box with Hello World
+        }
+    </script>
+</body>
+</html>
