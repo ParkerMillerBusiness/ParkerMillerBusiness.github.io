@@ -27,7 +27,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Projects</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
                     </ul>
@@ -140,73 +140,53 @@
                 </div>
             </div>
         </section>
-        <!-- Contact Section-->
-        <section class="page-section" id="contact">
+        <!-- Resume Section-->
+        <section class="page-section" id="resume">
             <div class="container">
-                <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Resume</h2>
+                <!-- Resume Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Experience</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <!-- Contact Section Form-->
+                <!-- Experience Section-->
                 <div class="row justify-content-center">
-                    <div class="col-lg-8 col-xl-7">
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Name input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                <label for="name">Full name</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                    <div class="col-lg-8 mx-auto">
+                        <!-- Experience List-->
+                        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+                            <div class="resume-content">
+                                <h3 class="mb-0">Senior Software Engineer</h3>
+                                <div class="subheading mb-3">Tech Innovations Inc.</div>
+                                <p>Developed and managed software solutions for clients, focusing on scalable web applications. Led a team of 10 developers and collaborated across departments to ensure high-quality deliverables.</p>
                             </div>
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                <label for="email">Email address</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            <div class="resume-date text-md-right">
+                                <span class="text-primary">March 2019 - Present</span>
                             </div>
-                            <!-- Phone number input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                <label for="phone">Phone number</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                        </div>
+
+                        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+                            <div class="resume-content">
+                                <h3 class="mb-0">Software Developer</h3>
+                                <div class="subheading mb-3">Dynamic Web Solutions</div>
+                                <p>Specialized in full-stack development for e-commerce platforms, significantly improving the checkout process and user experience. Implemented automated testing tools that reduced bugs by 40%.</p>
                             </div>
-                            <!-- Message input-->
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                <label for="message">Message</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            <div class="resume-date text-md-right">
+                                <span class="text-primary">June 2015 - February 2019</span>
                             </div>
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
+                        </div>
+
+                        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+                            <div class="resume-content">
+                                <h3 class="mb-0">Junior Developer</h3>
+                                <div class="subheading mb-3">Startup Tech Ltd.</div>
+                                <p>Assisted in the development of mobile applications and provided timely solutions to software issues. Gained extensive experience in debugging and maintaining Java and Kotlin code.</p>
                             </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
-                        </form>
+                            <div class="resume-date text-md-right">
+                                <span class="text-primary">January 2012 - May 2015</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
