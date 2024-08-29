@@ -5,11 +5,15 @@ const app = express();
 const port = 3000;
 
 // Hardcoded API key (not recommended for production)
-const apiKey = "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";
+const apiKey = "your_api_key";
 
 const openai = new OpenAI({ apiKey });
 
 app.use(express.json());
+
+app.get('/', (req, res) => {
+    res.send('Welcome to my OpenAI server!');
+});
 
 app.post('/getCompletion', async (req, res) => {
     try {
