@@ -3,37 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Fetch Example</title>
+    <title>Wild West Story Game</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-
-    <button id="fetchButton">Get Message</button>
-    <p id="messageDisplay"></p>
-    <input type="text" id="userInput" placeholder="Type something...">
-    <button id="submitButton">Submit</button>
+    <div id="overlay">
+        <p id="youDied">You died...</p>
+        <button id="startButton">Play</button>
+    </div>
+    <div id="gameContainer">
+        <h1>Wild West Adventure</h1>
+        <p id="messageDisplay">Your journey begins...</p>
+        
+        <!-- Health Bar and Numeric Value -->
+        <div id="healthContainer">
+            <label for="healthBar">Health:</label>
+            <progress id="healthBar" value="100" max="100"></progress>
+            <span id="healthValue">100/100</span>
+        </div>
+        
+        <button id="option1">Option 1</button>
+        <button id="option2">Option 2</button>
+        <button id="option3">Option 3</button>
+        <button id="option4">Option 4</button>
+    </div>
 
     <script>
         let currentMessage = ''
-        document.getElementById('submitButton').addEventListener('click', async function() {
-            const userInput = document.getElementById('userInput').value;
-            console.log('User input:', userInput);
+
+document.getElementById('option1').addEventListener('click', async function() {
+            const userInput = 'I pick option 1'
             currentMessage = currentMessage + userInput;
             currentMessage = currentMessage.replace(/[^a-zA-Z0-9 ]/g, '');
             const response = await fetch(`https://sy0pr5pyif.execute-api.us-east-1.amazonaws.com/stage1?history=${encodeURIComponent(currentMessage)}`);
             const data = await response.json();
-            const body = JSON.parse(data.body);
-            document.getElementById('messageDisplay').innerText = body.message;
-            currentMessage = body.message;
+    const body = JSON.parse(data.body);
+    
+    // Using a regex to find content within curly braces
+    const matchCurly = body.message.match(/\{([^}]+)\}/);
+    
+    // Check if there was a match in curly braces and if so, use the first group (which excludes the braces)
+    if (matchCurly && matchCurly[1]) {
+        document.getElementById('messageDisplay').innerText = matchCurly[1].trim();
+    } else {
+        document.getElementById('messageDisplay').innerText = "No content in braces found.";
+    }
+
+    // Using regex to find all contents within square brackets
+    const matchesSquare = [...body.message.matchAll(/\[([^\]]+)\]/g)];
+    
+    // Update button texts based on the matches found in square brackets
+    if (matchesSquare.length >= 1 && matchesSquare[0][1]) {
+        document.getElementById('option1').innerText = matchesSquare[0][1].trim();
+    }
+    if (matchesSquare.length >= 2 && matchesSquare[1][1]) {
+        document.getElementById('option2').innerText = matchesSquare[1][1].trim();
+    }
+    if (matchesSquare.length >= 3 && matchesSquare[2][1]) {
+        document.getElementById('option3').innerText = matchesSquare[2][1].trim();
+    }
+    if (matchesSquare.length >= 4 && matchesSquare[3][1]) {
+        document.getElementById('option4').innerText = matchesSquare[3][1].trim();
+    }
+        // Using regex to find the first number within parentheses
+        const matchParentheses = body.message.match(/\((\d+)\)/);
+    
+    // Update the health value display and health bar value based on parentheses content
+    if (matchParentheses && matchParentheses[1]) {
+        const health = parseInt(matchParentheses[1], 10);
+        document.getElementById('healthValue').innerText = `${health}/100`;
+        document.getElementById('healthBar').value = health;
+    }
+
+    currentMessage = body.message;
         });
 
-        document.getElementById('fetchButton').addEventListener('click', async function() {
-            const response = await fetch('https://sy0pr5pyif.execute-api.us-east-1.amazonaws.com/stage1?');
+
+document.getElementById('option2').addEventListener('click', async function() {
+            const userInput = 'I pick option 2'
+            currentMessage = currentMessage + userInput;
+            currentMessage = currentMessage.replace(/[^a-zA-Z0-9 ]/g, '');
+            const response = await fetch(`https://sy0pr5pyif.execute-api.us-east-1.amazonaws.com/stage1?history=${encodeURIComponent(currentMessage)}`);
             const data = await response.json();
-            const body = JSON.parse(data.body);
-            document.getElementById('messageDisplay').innerText = body.message;
-            currentMessage = body.message;
+    const body = JSON.parse(data.body);
+    
+    // Using a regex to find content within curly braces
+    const matchCurly = body.message.match(/\{([^}]+)\}/);
+    
+    // Check if there was a match in curly braces and if so, use the first group (which excludes the braces)
+    if (matchCurly && matchCurly[1]) {
+        document.getElementById('messageDisplay').innerText = matchCurly[1].trim();
+    } else {
+        document.getElementById('messageDisplay').innerText = "No content in braces found.";
+    }
+
+    // Using regex to find all contents within square brackets
+    const matchesSquare = [...body.message.matchAll(/\[([^\]]+)\]/g)];
+    
+    // Update button texts based on the matches found in square brackets
+    if (matchesSquare.length >= 1 && matchesSquare[0][1]) {
+        document.getElementById('option1').innerText = matchesSquare[0][1].trim();
+    }
+    if (matchesSquare.length >= 2 && matchesSquare[1][1]) {
+        document.getElementById('option2').innerText = matchesSquare[1][1].trim();
+    }
+    if (matchesSquare.length >= 3 && matchesSquare[2][1]) {
+        document.getElementById('option3').innerText = matchesSquare[2][1].trim();
+    }
+    if (matchesSquare.length >= 4 && matchesSquare[3][1]) {
+        document.getElementById('option4').innerText = matchesSquare[3][1].trim();
+    }
+        // Using regex to find the first number within parentheses
+        const matchParentheses = body.message.match(/\((\d+)\)/);
+    
+    // Update the health value display and health bar value based on parentheses content
+    if (matchParentheses && matchParentheses[1]) {
+        const health = parseInt(matchParentheses[1], 10);
+        document.getElementById('healthValue').innerText = `${health}/100`;
+        document.getElementById('healthBar').value = health;
+    }
+
+    currentMessage = body.message;
         });
+
+
+document.getElementById('option3').addEventListener('click', async function() {
+    const userInput = 'I pick option 3';
+    currentMessage += userInput;
+    currentMessage = currentMessage.replace(/[^a-zA-Z0-9 ]/g, '');
+
+    const response = await fetch(`https://sy0pr5pyif.execute-api.us-east-1.amazonaws.com/stage1?history=${encodeURIComponent(currentMessage)}`);
+    const data = await response.json();
+    const body = JSON.parse(data.body);
+    
+    // Using a regex to find content within curly braces
+    const matchCurly = body.message.match(/\{([^}]+)\}/);
+    
+    // Update the message display based on curly brace content
+    if (matchCurly && matchCurly[1]) {
+        document.getElementById('messageDisplay').innerText = matchCurly[1].trim();
+    } else {
+        document.getElementById('messageDisplay').innerText = "No content in braces found.";
+    }
+
+    // Using regex to find all contents within square brackets
+    const matchesSquare = [...body.message.matchAll(/\[([^\]]+)\]/g)];
+    
+    // Update button texts based on the matches found in square brackets
+    if (matchesSquare.length >= 1 && matchesSquare[0][1]) {
+        document.getElementById('option1').innerText = matchesSquare[0][1].trim();
+    }
+    if (matchesSquare.length >= 2 && matchesSquare[1][1]) {
+        document.getElementById('option2').innerText = matchesSquare[1][1].trim();
+    }
+    if (matchesSquare.length >= 3 && matchesSquare[2][1]) {
+        document.getElementById('option3').innerText = matchesSquare[2][1].trim();
+    }
+    if (matchesSquare.length >= 4 && matchesSquare[3][1]) {
+        document.getElementById('option4').innerText = matchesSquare[3][1].trim();
+    }
+
+    // Using regex to find the first number within parentheses
+    const matchParentheses = body.message.match(/\((\d+)\)/);
+    
+    // Update the health value display and health bar value based on parentheses content
+    if (matchParentheses && matchParentheses[1]) {
+        const health = parseInt(matchParentheses[1], 10);
+        document.getElementById('healthValue').innerText = `${health}/100`;
+        document.getElementById('healthBar').value = health;
+    }
+
+    currentMessage = body.message;
+});
+
+document.getElementById('option4').addEventListener('click', async function() {
+            const userInput = 'I pick option 4'
+            currentMessage = currentMessage + userInput;
+            currentMessage = currentMessage.replace(/[^a-zA-Z0-9 ]/g, '');
+            const response = await fetch(`https://sy0pr5pyif.execute-api.us-east-1.amazonaws.com/stage1?history=${encodeURIComponent(currentMessage)}`);
+            const data = await response.json();
+    const body = JSON.parse(data.body);
+    
+    // Using a regex to find content within curly braces
+    const matchCurly = body.message.match(/\{([^}]+)\}/);
+    
+    // Check if there was a match in curly braces and if so, use the first group (which excludes the braces)
+    if (matchCurly && matchCurly[1]) {
+        document.getElementById('messageDisplay').innerText = matchCurly[1].trim();
+    } else {
+        document.getElementById('messageDisplay').innerText = "No content in braces found.";
+    }
+
+    // Using regex to find all contents within square brackets
+    const matchesSquare = [...body.message.matchAll(/\[([^\]]+)\]/g)];
+    
+    // Update button texts based on the matches found in square brackets
+    if (matchesSquare.length >= 1 && matchesSquare[0][1]) {
+        document.getElementById('option1').innerText = matchesSquare[0][1].trim();
+    }
+    if (matchesSquare.length >= 2 && matchesSquare[1][1]) {
+        document.getElementById('option2').innerText = matchesSquare[1][1].trim();
+    }
+    if (matchesSquare.length >= 3 && matchesSquare[2][1]) {
+        document.getElementById('option3').innerText = matchesSquare[2][1].trim();
+    }
+    if (matchesSquare.length >= 4 && matchesSquare[3][1]) {
+        document.getElementById('option4').innerText = matchesSquare[3][1].trim();
+    }
+        // Using regex to find the first number within parentheses
+        const matchParentheses = body.message.match(/\((\d+)\)/);
+    
+    // Update the health value display and health bar value based on parentheses content
+    if (matchParentheses && matchParentheses[1]) {
+        const health = parseInt(matchParentheses[1], 10);
+        document.getElementById('healthValue').innerText = `${health}/100`;
+        document.getElementById('healthBar').value = health;
+    }
+
+    currentMessage = body.message;
+        });
+
+        document.getElementById('startButton').addEventListener('click', async function() {
+            document.getElementById('overlay').style.display = 'none';
+    const response = await fetch('https://sy0pr5pyif.execute-api.us-east-1.amazonaws.com/stage1?');
+    const data = await response.json();
+    const body = JSON.parse(data.body);
+    
+    // Using a regex to find content within curly braces
+    const matchCurly = body.message.match(/\{([^}]+)\}/);
+    
+    // Check if there was a match in curly braces and if so, use the first group (which excludes the braces)
+    if (matchCurly && matchCurly[1]) {
+        document.getElementById('messageDisplay').innerText = matchCurly[1].trim();
+    } else {
+        document.getElementById('messageDisplay').innerText = "No content in braces found.";
+    }
+
+    // Using regex to find all contents within square brackets
+    const matchesSquare = [...body.message.matchAll(/\[([^\]]+)\]/g)];
+    
+    // Update button texts based on the matches found in square brackets
+    if (matchesSquare.length >= 1 && matchesSquare[0][1]) {
+        document.getElementById('option1').innerText = matchesSquare[0][1].trim();
+    }
+    if (matchesSquare.length >= 2 && matchesSquare[1][1]) {
+        document.getElementById('option2').innerText = matchesSquare[1][1].trim();
+    }
+    if (matchesSquare.length >= 3 && matchesSquare[2][1]) {
+        document.getElementById('option3').innerText = matchesSquare[2][1].trim();
+    }
+    if (matchesSquare.length >= 4 && matchesSquare[3][1]) {
+        document.getElementById('option4').innerText = matchesSquare[3][1].trim();
+    }
+
+    currentMessage = body.message;
+
+});
     </script>
 
 </body>

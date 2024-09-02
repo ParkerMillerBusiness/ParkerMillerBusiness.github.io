@@ -1,0 +1,106 @@
+body {
+	font-family: 'Courier New', Courier, monospace;
+	background-color: #f4f4f2;
+	color: #333;
+	text-align: center;
+	padding: 20px;
+}
+#gameContainer {
+	max-width: 600px;
+	margin: auto;
+	background: #dcd0c0;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+button {
+	background-color: #8a7357;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	margin: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+button:hover {
+	background-color: #60492c;
+}
+p {
+	background-color: #eae0d5;
+	padding: 15px;
+	border-radius: 5px;
+	margin: 20px 0;
+}
+#healthContainer {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#healthBar {
+    width: 80%; /* Adjust width as needed */
+    height: 20px; /* Set height for better visibility */
+    margin: 0 auto; /* Center the progress bar */
+    -webkit-appearance: none; /* Necessary for WebKit browsers */
+    appearance: none; /* Standard CSS for customizing appearance */
+}
+
+#healthBar::-webkit-progress-bar {
+    background-color: #eee; /* Light grey background */
+}
+
+#healthBar::-webkit-progress-value {
+    background-color: red; /* Red color for the progress bar value */
+}
+
+#healthBar::-moz-progress-bar {
+    background-color: red; /* Red color for Mozilla browsers */
+}
+
+#healthBar::-ms-fill {
+    background-color: red; /* Red fill color for Internet Explorer */
+    border: none; /* Removes default border in IE */
+}
+
+#healthValue {
+    font-weight: bold;
+}
+
+label {
+    margin-right: 10px;
+}
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1000;
+}
+
+#youDied {
+    color: #FF6347; /* Tomato red for emphasis */
+    font-size: 48px; /* Large font size for impact */
+    margin-bottom: 20px; /* Space between the message and the button */
+}
+
+#startButton {
+    padding: 15px 30px;
+    font-size: 20px;
+    color: white;
+    background-color: #8a7357; /* Matching the game theme */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#startButton:hover {
+    background-color: #60492c; /* Darker shade on hover */
+}
