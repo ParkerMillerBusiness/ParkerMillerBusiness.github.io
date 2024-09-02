@@ -9,12 +9,12 @@
 <body>
 
     <div id="overlay">
-        <p id="youDied">You died...</p>
+        <p id="youDied" style="display: none">You died...</p>
         <button id="startButton">Play</button>
     </div>
     <div id="gameContainer">
         <h1>Wild West Adventure</h1>
-        <p id="messageDisplay">Your journey begins...</p>
+        <p id="messageDisplay">Loading...</p>
         
         <!-- Health Bar and Numeric Value -->
         <div id="healthContainer">
@@ -33,6 +33,10 @@
         let currentMessage = ''
 
 document.getElementById('option1').addEventListener('click', async function() {
+    document.getElementById('option1').disabled = true;
+            document.getElementById('option2').disabled = true;
+            document.getElementById('option3').disabled = true;
+            document.getElementById('option4').disabled = true;
             const userInput = 'I pick option 1'
             currentMessage = currentMessage + userInput;
             currentMessage = currentMessage.replace(/[^a-zA-Z0-9 ]/g, '');
@@ -74,13 +78,27 @@ document.getElementById('option1').addEventListener('click', async function() {
         const health = parseInt(matchParentheses[1], 10);
         document.getElementById('healthValue').innerText = `${health}/100`;
         document.getElementById('healthBar').value = health;
+        if(health == 0){
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('youDied').style.display = 'block';
+            document.getElementById('healthValue').innerText = `100/100`;
+            document.getElementById('healthBar').value = 100;
+        }
     }
 
     currentMessage = body.message;
+    document.getElementById('option1').disabled = false;
+    document.getElementById('option2').disabled = false;
+    document.getElementById('option3').disabled = false;
+    document.getElementById('option4').disabled = false;
         });
 
 
 document.getElementById('option2').addEventListener('click', async function() {
+    document.getElementById('option1').disabled = true;
+            document.getElementById('option2').disabled = true;
+            document.getElementById('option3').disabled = true;
+            document.getElementById('option4').disabled = true;
             const userInput = 'I pick option 2'
             currentMessage = currentMessage + userInput;
             currentMessage = currentMessage.replace(/[^a-zA-Z0-9 ]/g, '');
@@ -122,13 +140,27 @@ document.getElementById('option2').addEventListener('click', async function() {
         const health = parseInt(matchParentheses[1], 10);
         document.getElementById('healthValue').innerText = `${health}/100`;
         document.getElementById('healthBar').value = health;
+        if(health == 0){
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('youDied').style.display = 'block';
+            document.getElementById('healthValue').innerText = `100/100`;
+            document.getElementById('healthBar').value = 100;
+        }
     }
 
     currentMessage = body.message;
+    document.getElementById('option1').disabled = false;
+    document.getElementById('option2').disabled = false;
+    document.getElementById('option3').disabled = false;
+    document.getElementById('option4').disabled = false;
         });
 
 
 document.getElementById('option3').addEventListener('click', async function() {
+    document.getElementById('option1').disabled = true;
+            document.getElementById('option2').disabled = true;
+            document.getElementById('option3').disabled = true;
+            document.getElementById('option4').disabled = true;
     const userInput = 'I pick option 3';
     currentMessage += userInput;
     currentMessage = currentMessage.replace(/[^a-zA-Z0-9 ]/g, '');
@@ -172,12 +204,26 @@ document.getElementById('option3').addEventListener('click', async function() {
         const health = parseInt(matchParentheses[1], 10);
         document.getElementById('healthValue').innerText = `${health}/100`;
         document.getElementById('healthBar').value = health;
+        if(health == 0){
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('youDied').style.display = 'block';
+            document.getElementById('healthValue').innerText = `100/100`;
+            document.getElementById('healthBar').value = 100;
+        }
     }
 
     currentMessage = body.message;
+    document.getElementById('option1').disabled = false;
+    document.getElementById('option2').disabled = false;
+    document.getElementById('option3').disabled = false;
+    document.getElementById('option4').disabled = false;
 });
 
 document.getElementById('option4').addEventListener('click', async function() {
+    document.getElementById('option1').disabled = true;
+            document.getElementById('option2').disabled = true;
+            document.getElementById('option3').disabled = true;
+            document.getElementById('option4').disabled = true;
             const userInput = 'I pick option 4'
             currentMessage = currentMessage + userInput;
             currentMessage = currentMessage.replace(/[^a-zA-Z0-9 ]/g, '');
@@ -219,12 +265,26 @@ document.getElementById('option4').addEventListener('click', async function() {
         const health = parseInt(matchParentheses[1], 10);
         document.getElementById('healthValue').innerText = `${health}/100`;
         document.getElementById('healthBar').value = health;
+        if(health == 0){
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('youDied').style.display = 'block';
+            document.getElementById('healthValue').innerText = `100/100`;
+            document.getElementById('healthBar').value = 100;
+        }
     }
 
     currentMessage = body.message;
+    document.getElementById('option1').disabled = false;
+    document.getElementById('option2').disabled = false;
+    document.getElementById('option3').disabled = false;
+    document.getElementById('option4').disabled = false;
         });
 
         document.getElementById('startButton').addEventListener('click', async function() {
+            document.getElementById('option1').disabled = true;
+            document.getElementById('option2').disabled = true;
+            document.getElementById('option3').disabled = true;
+            document.getElementById('option4').disabled = true;
             document.getElementById('overlay').style.display = 'none';
     const response = await fetch('https://sy0pr5pyif.execute-api.us-east-1.amazonaws.com/stage1?');
     const data = await response.json();
@@ -256,8 +316,13 @@ document.getElementById('option4').addEventListener('click', async function() {
     if (matchesSquare.length >= 4 && matchesSquare[3][1]) {
         document.getElementById('option4').innerText = matchesSquare[3][1].trim();
     }
+    
 
     currentMessage = body.message;
+    document.getElementById('option1').disabled = false;
+    document.getElementById('option2').disabled = false;
+    document.getElementById('option3').disabled = false;
+    document.getElementById('option4').disabled = false;
 
 });
     </script>
