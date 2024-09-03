@@ -1,4 +1,7 @@
 body {
+    background-image: url('assets/WWBG3.avif'), url('assets/WWBG2.jpg');
+    background-size: cover;
+    background-attachment: fixed; /* Keeps the background stationary during scrolling */
 	font-family: 'Courier New', Courier, monospace;
 	background-color: #f4f4f2;
 	color: #333;
