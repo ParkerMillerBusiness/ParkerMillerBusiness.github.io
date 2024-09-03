@@ -10,6 +10,8 @@
 
     <div id="overlay">
         <p id="youDied" style="display: none">You died...</p>
+        <p id="youWon" style="display: none">Congratulations! You defeated Silas Black and won the game! Click play to play again.</p>
+        <p>In this game, you are Jack Thorn, a lone cowboy riding across the unforgiving Wild West on a quest for vengeance. Outlaws destroyed your town, killing your brother and sister-in-law, leaving their daughter orphaned. Their leader, a ruthless man known only as Silas Black, orchestrated the massacre. With only your horse and a Colt revolver, you’re tracking Silas and his gang to Deadman’s Gulch. The journey is perilous, filled with deadly encounters, but you won’t stop until justice is served. Driven by the promise you made at their graves—you’ll see this through, or die trying. The road ahead is dangerous, but there’s no turning back now. Silas Black will pay for what he’s done, even if it costs you your life.</p>
         <button id="startButton">Play</button>
     </div>
     <div id="gameContainer">
@@ -70,21 +72,38 @@ document.getElementById('option1').addEventListener('click', async function() {
     if (matchesSquare.length >= 4 && matchesSquare[3][1]) {
         document.getElementById('option4').innerText = matchesSquare[3][1].trim();
     }
-        // Using regex to find the first number within parentheses
-        const matchParentheses = body.message.match(/\((\d+)\)/);
-    
-    // Update the health value display and health bar value based on parentheses content
-    if (matchParentheses && matchParentheses[1]) {
-        const health = parseInt(matchParentheses[1], 10);
-        document.getElementById('healthValue').innerText = `${health}/100`;
-        document.getElementById('healthBar').value = health;
-        if(health == 0){
-            document.getElementById('overlay').style.display = 'block';
-            document.getElementById('youDied').style.display = 'block';
-            document.getElementById('healthValue').innerText = `100/100`;
-            document.getElementById('healthBar').value = 100;
-        }
+// Use a regular expression to find all content within parentheses
+const matches = body.message.match(/\(([^)]+)\)/g);
+
+// Check if two or more matches are found
+if (matches && matches.length >= 2) {
+    // Extract the second item within parentheses, remove parentheses, and trim any whitespace
+    const beatTheGame = matches[1].replace(/[()]/g, '').trim();
+
+    // Check the value of beatTheGame
+    if (beatTheGame === 'yes') {
+        document.getElementById('youDied').style.display = 'none';
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('youWon').style.display = 'block';
+        document.getElementById('healthValue').innerText = `100/100`;
+        document.getElementById('healthBar').value = 100;
     }
+
+}
+
+// The rest of your code for updating health remains the same
+if (matches && matches.length >= 1) {
+    const health = parseInt(matches[0].replace(/[()]/g, '').trim(), 10);
+    document.getElementById('healthValue').innerText = `${health}/100`;
+    document.getElementById('healthBar').value = health;
+    if (health == 0) {
+        document.getElementById('youWon').style.display = 'none';
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('youDied').style.display = 'block';
+        document.getElementById('healthValue').innerText = `100/100`;
+        document.getElementById('healthBar').value = 100;
+    }
+}
 
     currentMessage = body.message;
     document.getElementById('option1').disabled = false;
@@ -132,21 +151,38 @@ document.getElementById('option2').addEventListener('click', async function() {
     if (matchesSquare.length >= 4 && matchesSquare[3][1]) {
         document.getElementById('option4').innerText = matchesSquare[3][1].trim();
     }
-        // Using regex to find the first number within parentheses
-        const matchParentheses = body.message.match(/\((\d+)\)/);
-    
-    // Update the health value display and health bar value based on parentheses content
-    if (matchParentheses && matchParentheses[1]) {
-        const health = parseInt(matchParentheses[1], 10);
-        document.getElementById('healthValue').innerText = `${health}/100`;
-        document.getElementById('healthBar').value = health;
-        if(health == 0){
-            document.getElementById('overlay').style.display = 'block';
-            document.getElementById('youDied').style.display = 'block';
-            document.getElementById('healthValue').innerText = `100/100`;
-            document.getElementById('healthBar').value = 100;
-        }
+// Use a regular expression to find all content within parentheses
+const matches = body.message.match(/\(([^)]+)\)/g);
+
+// Check if two or more matches are found
+if (matches && matches.length >= 2) {
+    // Extract the second item within parentheses, remove parentheses, and trim any whitespace
+    const beatTheGame = matches[1].replace(/[()]/g, '').trim();
+
+    // Check the value of beatTheGame
+    if (beatTheGame === 'yes') {
+        document.getElementById('youDied').style.display = 'none';
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('youWon').style.display = 'block';
+        document.getElementById('healthValue').innerText = `100/100`;
+        document.getElementById('healthBar').value = 100;
     }
+
+}
+
+// The rest of your code for updating health remains the same
+if (matches && matches.length >= 1) {
+    const health = parseInt(matches[0].replace(/[()]/g, '').trim(), 10);
+    document.getElementById('healthValue').innerText = `${health}/100`;
+    document.getElementById('healthBar').value = health;
+    if (health == 0) {
+        document.getElementById('youWon').style.display = 'none';
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('youDied').style.display = 'block';
+        document.getElementById('healthValue').innerText = `100/100`;
+        document.getElementById('healthBar').value = 100;
+    }
+}
 
     currentMessage = body.message;
     document.getElementById('option1').disabled = false;
@@ -196,21 +232,38 @@ document.getElementById('option3').addEventListener('click', async function() {
         document.getElementById('option4').innerText = matchesSquare[3][1].trim();
     }
 
-    // Using regex to find the first number within parentheses
-    const matchParentheses = body.message.match(/\((\d+)\)/);
-    
-    // Update the health value display and health bar value based on parentheses content
-    if (matchParentheses && matchParentheses[1]) {
-        const health = parseInt(matchParentheses[1], 10);
-        document.getElementById('healthValue').innerText = `${health}/100`;
-        document.getElementById('healthBar').value = health;
-        if(health == 0){
-            document.getElementById('overlay').style.display = 'block';
-            document.getElementById('youDied').style.display = 'block';
-            document.getElementById('healthValue').innerText = `100/100`;
-            document.getElementById('healthBar').value = 100;
-        }
+// Use a regular expression to find all content within parentheses
+const matches = body.message.match(/\(([^)]+)\)/g);
+
+// Check if two or more matches are found
+if (matches && matches.length >= 2) {
+    // Extract the second item within parentheses, remove parentheses, and trim any whitespace
+    const beatTheGame = matches[1].replace(/[()]/g, '').trim();
+
+    // Check the value of beatTheGame
+    if (beatTheGame === 'yes') {
+        document.getElementById('youDied').style.display = 'none';
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('youWon').style.display = 'block';
+        document.getElementById('healthValue').innerText = `100/100`;
+        document.getElementById('healthBar').value = 100;
     }
+
+}
+
+// The rest of your code for updating health remains the same
+if (matches && matches.length >= 1) {
+    const health = parseInt(matches[0].replace(/[()]/g, '').trim(), 10);
+    document.getElementById('healthValue').innerText = `${health}/100`;
+    document.getElementById('healthBar').value = health;
+    if (health == 0) {
+        document.getElementById('youWon').style.display = 'none';
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('youDied').style.display = 'block';
+        document.getElementById('healthValue').innerText = `100/100`;
+        document.getElementById('healthBar').value = 100;
+    }
+}
 
     currentMessage = body.message;
     document.getElementById('option1').disabled = false;
@@ -257,21 +310,38 @@ document.getElementById('option4').addEventListener('click', async function() {
     if (matchesSquare.length >= 4 && matchesSquare[3][1]) {
         document.getElementById('option4').innerText = matchesSquare[3][1].trim();
     }
-        // Using regex to find the first number within parentheses
-        const matchParentheses = body.message.match(/\((\d+)\)/);
-    
-    // Update the health value display and health bar value based on parentheses content
-    if (matchParentheses && matchParentheses[1]) {
-        const health = parseInt(matchParentheses[1], 10);
-        document.getElementById('healthValue').innerText = `${health}/100`;
-        document.getElementById('healthBar').value = health;
-        if(health == 0){
-            document.getElementById('overlay').style.display = 'block';
-            document.getElementById('youDied').style.display = 'block';
-            document.getElementById('healthValue').innerText = `100/100`;
-            document.getElementById('healthBar').value = 100;
-        }
+// Use a regular expression to find all content within parentheses
+const matches = body.message.match(/\(([^)]+)\)/g);
+
+// Check if two or more matches are found
+if (matches && matches.length >= 2) {
+    // Extract the second item within parentheses, remove parentheses, and trim any whitespace
+    const beatTheGame = matches[1].replace(/[()]/g, '').trim();
+
+    // Check the value of beatTheGame
+    if (beatTheGame === 'yes') {
+        document.getElementById('youDied').style.display = 'none';
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('youWon').style.display = 'block';
+        document.getElementById('healthValue').innerText = `100/100`;
+        document.getElementById('healthBar').value = 100;
     }
+
+}
+
+// The rest of your code for updating health remains the same
+if (matches && matches.length >= 1) {
+    const health = parseInt(matches[0].replace(/[()]/g, '').trim(), 10);
+    document.getElementById('healthValue').innerText = `${health}/100`;
+    document.getElementById('healthBar').value = health;
+    if (health == 0) {
+        document.getElementById('youWon').style.display = 'none';
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('youDied').style.display = 'block';
+        document.getElementById('healthValue').innerText = `100/100`;
+        document.getElementById('healthBar').value = 100;
+    }
+}
 
     currentMessage = body.message;
     document.getElementById('option1').disabled = false;

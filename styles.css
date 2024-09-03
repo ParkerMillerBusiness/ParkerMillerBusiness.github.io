@@ -126,3 +126,17 @@ button:not(:disabled):active {
     background-color: #0056b3; /* Darker blue when clicked */
     color: white;              /* White text */
 }
+#youWon {
+    display: none; /* Hide by default, display when needed */
+    font-size: 2rem;
+    color: #28a745; /* Green color for a positive effect */
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    border: 5px solid #28a745; /* Match the text color */
+    background-color: #eafaf1; /* Light green background */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Add a slight shadow for depth */
+    margin: 20px auto;
+    width: 80%;
+}
