@@ -11,7 +11,7 @@
     <div id="overlay">
         <p id="youDied" style="display: none">You died...</p>
         <p id="youWon" style="display: none">Congratulations! You defeated Silas Black and won the game! Click play to play again.</p>
-        <p>In this game, you are Jack Thorn, a lone cowboy riding across the unforgiving Wild West on a quest for vengeance. Outlaws destroyed your town, killing your brother and sister-in-law, leaving their daughter orphaned. Their leader, a ruthless man known only as Silas Black, orchestrated the massacre. With only your horse and a Colt revolver, you’re tracking Silas and his gang to Deadman’s Gulch. The journey is perilous, filled with deadly encounters, but you won’t stop until justice is served. Driven by the promise you made at their graves—you’ll see this through, or die trying. The road ahead is dangerous, but there’s no turning back now. Silas Black will pay for what he’s done, even if it costs you your life.</p>
+        <p id="context">In this game, you are Jack Thorn, a lone cowboy hardened by loss and driven by vengeance. After outlaws razed your town, slaughtering your brother and sister-in-law and leaving their daughter an orphan, you swore to make them pay. You’ve tracked their leader, the ruthless Silas Black, across the unforgiving Wild West, overcoming deadly obstacles at every turn. Now, you’ve finally arrived at Deadman’s Gulch, the lair of your enemies. The journey has been perilous, but you’ve made it. With your Colt revolver in hand and the memory of your family burning in your heart, you prepare for the final showdown. There’s no more running, no more hiding—Silas Black is here, and he will face your wrath. This ends now, one way or another.</p>
         <button id="startButton">Play</button>
     </div>
     <div id="gameContainer">
@@ -82,6 +82,7 @@ if (matches && matches.length >= 2) {
 
     // Check the value of beatTheGame
     if (beatTheGame === 'yes') {
+        document.getElementById('context').innerText = matchCurly[1].trim();
         document.getElementById('youDied').style.display = 'none';
         document.getElementById('overlay').style.display = 'block';
         document.getElementById('youWon').style.display = 'block';
@@ -97,6 +98,7 @@ if (matches && matches.length >= 1) {
     document.getElementById('healthValue').innerText = `${health}/100`;
     document.getElementById('healthBar').value = health;
     if (health == 0) {
+        document.getElementById('context').innerText = matchCurly[1].trim();
         document.getElementById('youWon').style.display = 'none';
         document.getElementById('overlay').style.display = 'block';
         document.getElementById('youDied').style.display = 'block';
@@ -161,6 +163,7 @@ if (matches && matches.length >= 2) {
 
     // Check the value of beatTheGame
     if (beatTheGame === 'yes') {
+        document.getElementById('context').innerText = matchCurly[1].trim();
         document.getElementById('youDied').style.display = 'none';
         document.getElementById('overlay').style.display = 'block';
         document.getElementById('youWon').style.display = 'block';
@@ -176,6 +179,7 @@ if (matches && matches.length >= 1) {
     document.getElementById('healthValue').innerText = `${health}/100`;
     document.getElementById('healthBar').value = health;
     if (health == 0) {
+        document.getElementById('context').innerText = matchCurly[1].trim();
         document.getElementById('youWon').style.display = 'none';
         document.getElementById('overlay').style.display = 'block';
         document.getElementById('youDied').style.display = 'block';
@@ -242,6 +246,7 @@ if (matches && matches.length >= 2) {
 
     // Check the value of beatTheGame
     if (beatTheGame === 'yes') {
+        document.getElementById('context').innerText = matchCurly[1].trim();
         document.getElementById('youDied').style.display = 'none';
         document.getElementById('overlay').style.display = 'block';
         document.getElementById('youWon').style.display = 'block';
@@ -257,6 +262,7 @@ if (matches && matches.length >= 1) {
     document.getElementById('healthValue').innerText = `${health}/100`;
     document.getElementById('healthBar').value = health;
     if (health == 0) {
+        document.getElementById('context').innerText = matchCurly[1].trim();
         document.getElementById('youWon').style.display = 'none';
         document.getElementById('overlay').style.display = 'block';
         document.getElementById('youDied').style.display = 'block';
@@ -320,6 +326,7 @@ if (matches && matches.length >= 2) {
 
     // Check the value of beatTheGame
     if (beatTheGame === 'yes') {
+        document.getElementById('context').innerText = matchCurly[1].trim();
         document.getElementById('youDied').style.display = 'none';
         document.getElementById('overlay').style.display = 'block';
         document.getElementById('youWon').style.display = 'block';
@@ -335,6 +342,7 @@ if (matches && matches.length >= 1) {
     document.getElementById('healthValue').innerText = `${health}/100`;
     document.getElementById('healthBar').value = health;
     if (health == 0) {
+        document.getElementById('context').innerText = matchCurly[1].trim();
         document.getElementById('youWon').style.display = 'none';
         document.getElementById('overlay').style.display = 'block';
         document.getElementById('youDied').style.display = 'block';
@@ -351,6 +359,8 @@ if (matches && matches.length >= 1) {
         });
 
         document.getElementById('startButton').addEventListener('click', async function() {
+            document.getElementById('healthValue').innerText = `100/100`;
+            document.getElementById('healthBar').value = 100;
             document.getElementById('option1').disabled = true;
             document.getElementById('option2').disabled = true;
             document.getElementById('option3').disabled = true;
